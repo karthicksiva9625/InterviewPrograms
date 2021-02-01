@@ -1,0 +1,205 @@
+package com.adactin.stepdefinition;
+
+import org.openqa.selenium.WebDriver;
+
+import com.adactin.baseclass.BaseClass1;
+import com.adactin.pom.BookNowPage;
+import com.adactin.pom.LoginPage;
+import com.adactin.pom.SearchHotelPage;
+import com.adactin.pom.SelectHotelPage;
+
+import cucumber.api.java.en.*;
+
+public class StepDefintion extends BaseClass1 {
+
+	public static WebDriver driver;
+
+	@Given("^User Launches the application\\.$")
+	public void user_Launches_the_application() throws Throwable {
+		driver = getBrowser("chrome");
+		getUrl("https://adactinhotelapp.com/");
+
+	}
+
+	@When("^User enters the valid username in the username field\\.$")
+	public void user_enters_the_valid_username_in_the_username_field() throws Throwable {
+		LoginPage lp = new LoginPage(driver);
+		inputToElement(lp.getUsername(), "karthick123");
+
+	}
+
+	@When("^User enters the valid  password in the password field\\.$")
+	public void user_enters_the_valid_password_in_the_password_field() throws Throwable {
+		LoginPage lp = new LoginPage(driver);
+		inputToElement(lp.getPassword(), "12131415");
+	}
+
+	@When("^User Clicks on the login button\\.$")
+	public void user_Clicks_on_the_login_button() throws Throwable {
+		LoginPage lp = new LoginPage(driver);
+		ClickOnElement(lp.getLogin());
+
+	}
+
+	@Then("^User verifies Whether the HomePage Navigates to the Search Hotel Page\\.$")
+	public void user_verifies_Whether_the_HomePage_Navigates_to_the_Search_Hotel_Page() throws Throwable {
+
+	}
+
+	@When("^User choose the Proper Location\\.$")
+	public void user_choose_the_Proper_Location() throws Throwable {
+		SearchHotelPage sp = new SearchHotelPage(driver);
+		selectDropDown(sp.getLocation(), "text", "London");
+
+	}
+
+	@When("^User choose the Proper Hotels\\.$")
+	public void user_choose_the_Proper_Hotels() throws Throwable {
+		SearchHotelPage sp = new SearchHotelPage(driver);
+		selectDropDown(sp.getHotels(), "text", "Hotel Sunshine");
+
+	}
+
+	@When("^User choose the RoomType\\.$")
+	public void user_choose_the_RoomType() throws Throwable {
+		SearchHotelPage sp = new SearchHotelPage(driver);
+		selectDropDown(sp.getRoom(), "text", "Deluxe");
+
+	}
+
+	@When("^User choose the NumberOfRooms\\.$")
+	public void user_choose_the_NumberOfRooms() throws Throwable {
+		SearchHotelPage sp = new SearchHotelPage(driver);
+		selectDropDown(sp.getRoomNos(), "text", "3 - Three");
+
+	}
+
+	@When("^User enters the CheckInDate\\.$")
+	public void user_enters_the_CheckInDate() throws Throwable {
+		SearchHotelPage sp = new SearchHotelPage(driver);
+		inputToElement(sp.getDate(), "31/12/2020");
+	}
+
+	@When("^User enters the CheckOutDate\\.$")
+	public void user_enters_the_CheckOutDate() throws Throwable {
+		SearchHotelPage sp = new SearchHotelPage(driver);
+		inputToElement(sp.getPickOut(), "5/1/2021");
+	}
+
+	@When("^User choose the AdultPerRoom\\.$")
+	public void user_choose_the_AdultPerRoom() throws Throwable {
+		SearchHotelPage sp = new SearchHotelPage(driver);
+		selectDropDown(sp.getAdultRoom(), "index", "2");
+
+	}
+
+	@When("^User Choose the ChildrenPerRoom\\.$")
+	public void user_Choose_the_ChildrenPerRoom() throws Throwable {
+		SearchHotelPage sp = new SearchHotelPage(driver);
+		selectDropDown(sp.getChildRoom(), "index", "2");
+	}
+
+	@When("^user Clicks on the Search button\\.$")
+	public void user_Clicks_on_the_Search_button() throws Throwable {
+		SearchHotelPage sp = new SearchHotelPage(driver);
+		ClickOnElement(sp.getSubmit());
+
+	}
+
+	@Then("^User verifies Whether the search Hotel Page Navigates to the select Hotel Page\\.$")
+	public void user_verifies_Whether_the_search_Hotel_Page_Navigates_to_the_select_Hotel_Page() throws Throwable {
+
+	}
+
+	@When("^User select the Radio Button\\.$")
+	public void user_select_the_Radio_Button() throws Throwable {
+		SelectHotelPage sl = new SelectHotelPage(driver);
+		ClickOnElement(sl.getRadio());
+
+	}
+
+	@When("^User Clicks on the Continue  button\\.$")
+	public void user_Clicks_on_the_Continue_button() throws Throwable {
+		SelectHotelPage sl = new SelectHotelPage(driver);
+		ClickOnElement(sl.getCont());
+
+	}
+
+	@Then("^User verifies Whether the select Hotel Page Navigates to Book Now Page\\.$")
+	public void user_verifies_Whether_the_select_Hotel_Page_Navigates_to_Book_Now_Page() throws Throwable {
+
+	}
+
+	@When("^User enters the Firstname\\.$")
+	public void user_enters_the_Firstname() throws Throwable {
+		BookNowPage bp = new BookNowPage(driver);
+		inputToElement(bp.getFname(), "Karthick");
+
+	}
+
+	@When("^User enters the Lastname\\.$")
+	public void user_enters_the_Lastname() throws Throwable {
+		BookNowPage bp = new BookNowPage(driver);
+		inputToElement(bp.getLname(), "RS");
+
+	}
+
+	@When("^User enters the Valid Address\\.$")
+	public void user_enters_the_Valid_Address() throws Throwable {
+		BookNowPage bp = new BookNowPage(driver);
+		inputToElement(bp.getAddress(), "147/53,Old Mambalam Road,Saidapet,Chennai-600015");
+	}
+
+	@When("^User enters the valid Creditcard Number\\.$")
+	public void user_enters_the_valid_Creditcard_Number() throws Throwable {
+		BookNowPage bp = new BookNowPage(driver);
+		inputToElement(bp.getCreditCard(), "1413121598765432");
+	}
+
+	@When("^User enters the valid Creditcard Type\\.$")
+	public void user_enters_the_valid_Creditcard_Type() throws Throwable {
+		BookNowPage bp = new BookNowPage(driver);
+		selectDropDown(bp.getcType(), "text", "VISA");
+	}
+
+	@When("^User selects the Expirydate\\.$")
+	public void user_selects_the_Expirydate() throws Throwable {
+		BookNowPage bp = new BookNowPage(driver);
+		selectDropDown(bp.getCcexpDate(), "value", "5");
+	}
+
+	
+	  @When("^User selects the Expiryyear\\.$") public void
+	  user_selects_the_Expiryyear() throws Throwable { BookNowPage bp = new
+	  BookNowPage(driver); selectDropDown(bp.getCcexpYear(), "value", "2020");
+	  
+	  }
+	 
+
+	@When("^User enters the Cvv Number\\.$")
+	public void user_enters_the_Cvv_Number() throws Throwable {
+		BookNowPage bp = new BookNowPage(driver);
+		inputToElement(bp.getCcv(), "745");
+	}
+
+	@When("^User Clicks on the BookNow Button\\.$")
+	public void user_Clicks_on_the_BookNow_Button() throws Throwable {
+		BookNowPage bp = new BookNowPage(driver);
+		ClickOnElement(bp.getBook());
+
+	}
+
+	@Then("^User verifies the Whether the  BookNow Page is Navigates to the Book Confirmation Page\\.$")
+	public void user_verifies_the_Whether_the_BookNow_Page_is_Navigates_to_the_Book_Confirmation_Page()
+			throws Throwable {
+
+	}
+
+	@When("^User Clicks on the Logout button\\.$")
+	public void user_Clicks_on_the_Logout_button() throws Throwable {
+		BookNowPage bp = new BookNowPage(driver);
+		ClickOnElement(bp.getLogout());
+
+	}
+
+}

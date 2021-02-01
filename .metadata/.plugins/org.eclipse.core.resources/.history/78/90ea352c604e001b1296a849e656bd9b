@@ -1,0 +1,18 @@
+package com.string.programs;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class MapProgram {
+
+	public static void main(String[] args) {
+
+		String s = "for the people by the people of the people";
+		String[] word = s.split(s);
+		Map<String, Integer> Word = new LinkedHashMap<String, Integer>();
+		for (String kword : word) {
+			System.out.println(kword);
+		}
+
+	}
+}

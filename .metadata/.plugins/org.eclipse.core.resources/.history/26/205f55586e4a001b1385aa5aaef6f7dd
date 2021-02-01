@@ -1,0 +1,16 @@
+package com.testng;
+
+import org.testng.Assert;
+
+public class AssertDemo {
+
+	String actual = "bala";
+	String expected = "Bala";
+
+	private void test1() {
+		System.out.println("Test1 Started");
+		Assert.assertEquals(actual, expected);
+		System.out.println("");
+	}
+
+}

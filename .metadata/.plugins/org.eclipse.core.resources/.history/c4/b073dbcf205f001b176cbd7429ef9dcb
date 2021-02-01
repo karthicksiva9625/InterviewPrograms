@@ -1,0 +1,23 @@
+package com.numberprograms.com;
+
+public class Arms2 {
+
+	public static void main(String[] args) {
+		int n, rev = 0, rem = 0;
+
+		for (int i = 1; i <= 1000; i++) {
+
+			if (i > 0) {
+
+				rem = i % 10;
+				rev = rev + (rem * rem * rem);
+				i = i / 10;
+			}
+			if (i == rev) {
+				System.out.println(i);
+			}
+
+		}
+
+	}
+}
